@@ -1,0 +1,158 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christian — Premium Portfolio</title>
+
+  <!-- Premium Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress"></div>
+
+  <!-- BACKGROUND BLOBS -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <!-- AMBIENT FLOATING SHAPES -->
+  <div class="float-shape fs1"></div>
+  <div class="float-shape fs2"></div>
+  <div class="float-shape fs3"></div>
+
+  <!-- DARK MODE TOGGLE -->
+  <button class="dark-toggle" id="darkToggle">☾</button>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="logo magnetic">Christian</div>
+      <div class="nav-actions">
+        <button class="nav-link magnetic" onclick="scrollToSection('about')">About</button>
+        <button class="nav-link magnetic" onclick="scrollToSection('skills')">Skills</button>
+        <button class="nav-link magnetic" onclick="scrollToSection('projects')">Projects</button>
+        <button class="nav-link magnetic" onclick="scrollToSection('contact')">Contact</button>
+      </div>
+      <button class="nav-btn magnetic" onclick="window.location.href='mailto:you@example.com'">Email</button>
+    </div>
+  </nav>
+
+  <!-- PAGE WRAPPER FOR TRANSITIONS -->
+  <div class="page-wrapper">
+
+    <!-- HERO -->
+    <section class="hero fade parallax" id="hero">
+      <div class="hero-inner">
+        <div class="hero-floating-text">Portfolio</div>
+        <h1 class="hero-title shimmer">Minimal. Precise. Intentional.</h1>
+        <p class="hero-sub">
+          I build clean, fast, and thoughtfully engineered digital experiences — blending modern UI with automation and robotics expertise.
+        </p>
+        <div class="hero-actions">
+          <button class="cta magnetic shimmer" onclick="scrollToSection('projects')">Explore My Work</button>
+          <button class="cta secondary magnetic" onclick="window.open('resume.pdf', '_blank')">View Resume</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="feature-row fade" id="about">
+      <div class="feature-grid">
+        <div class="feature-text glass magnetic">
+          <h2>About Me</h2>
+          <p>
+            I'm a developer and automation engineer based in Houston, TX.  
+            My work focuses on clarity, reliability, and premium minimal design.
+          </p>
+        </div>
+        <div class="feature-img about-img magnetic"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="feature-row fade" id="skills">
+      <div class="feature-grid reverse">
+        <div class="feature-text glass magnetic">
+          <h2>Core Skills</h2>
+
+          <div class="skill-bar" data-skill="90">
+            <span>JavaScript</span>
+            <div class="skill-fill"></div>
+          </div>
+
+          <div class="skill-bar" data-skill="85">
+            <span>Python</span>
+            <div class="skill-fill"></div>
+          </div>
+
+          <div class="skill-bar" data-skill="80">
+            <span>SQL</span>
+            <div class="skill-fill"></div>
+          </div>
+
+          <div class="skill-bar" data-skill="75">
+            <span>PLC / Automation</span>
+            <div class="skill-fill"></div>
+          </div>
+
+          <div class="skill-bar" data-skill="70">
+            <span>UI / Frontend</span>
+            <div class="skill-fill"></div>
+          </div>
+
+        </div>
+
+        <div class="feature-img skills-img magnetic"></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects fade" id="projects">
+      <h2 class="section-title shimmer">Selected Work</h2>
+
+      <div class="project-grid">
+        <div class="project-card glass lift magnetic">
+          <h3>Portfolio Platform</h3>
+          <p>A premium, minimal landing page built with smooth animations and clean UI.</p>
+        </div>
+
+        <div class="project-card glass lift magnetic">
+          <h3>Automation Interface</h3>
+          <p>Real‑time robotics dashboard with precise control and monitoring.</p>
+        </div>
+
+        <div class="project-card glass lift magnetic">
+          <h3>UI Component Library</h3>
+          <p>A modular, scalable design system for fast prototyping.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact fade" id="contact">
+      <h2 class="section-title shimmer">Get In Touch</h2>
+      <p class="contact-sub">
+        Want to collaborate or discuss a project?  
+        I’m always open to new opportunities.
+      </p>
+      <div class="contact-actions">
+        <button class="cta magnetic shimmer" onclick="window.location.href='mailto:you@example.com'">Email Me</button>
+        <button class="cta secondary magnetic" onclick="window.open('https://linkedin.com/in/yourprofile', '_blank')">LinkedIn</button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>© 2026 Christian — Premium Minimal Portfolio</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
