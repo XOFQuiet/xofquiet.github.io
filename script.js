@@ -7,7 +7,7 @@ function scrollToSection(id) {
   el.scrollIntoView({ behavior: "smooth" });
 }
 
-// Fade-in on scroll
+// Fade-in on scroll + section micro-animations
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -18,7 +18,7 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll(".fade").forEach(el => observer.observe(el));
 
-// Blur nav on scroll + scroll progress
+// Blur nav on scroll + scroll progress + parallax + floating text
 window.addEventListener("scroll", () => {
   const nav = document.querySelector(".nav");
   const progress = document.querySelector(".scroll-progress");
@@ -32,9 +32,10 @@ window.addEventListener("scroll", () => {
     nav.classList.remove("scrolled");
   }
 
-  progress.style.width = `${percent}%`;
+  if (progress) {
+    progress.style.width = `${percent}%`;
+  }
 
-  // Parallax hero + floating text
   const hero = document.querySelector(".parallax");
   const floatingText = document.querySelector(".hero-floating-text");
   if (hero) {
@@ -61,7 +62,7 @@ const skillObserver = new IntersectionObserver(entries => {
 
 skillBars.forEach(bar => skillObserver.observe(bar));
 
-// Page wrapper entrance transition
+// Page wrapper cinematic intro
 window.addEventListener("load", () => {
   const wrapper = document.querySelector(".page-wrapper");
   if (wrapper) {
@@ -99,5 +100,62 @@ magneticElements.forEach(el => {
 
   el.addEventListener("mouseleave", () => {
     el.style.transform = "translate(0, 0)";
+  });
+});
+
+// Button ripple effect
+document.querySelectorAll(".ripple").forEach(btn => {
+  btn.addEventListener("click", function (e) {
+    const rect = this.getBoundingClientRect();
+    const circle = document.createElement("span");
+    const diameter = Math.max(rect.width, rect.height);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${e.clientX - rect.left - radius}px`;
+    circle.style.top = `${e.clientY - rect.top - radius}px`;
+    circle.classList.add("ripple-circle");
+
+    const existingRipple = this.querySelector(".ripple-circle");
+    if (existingRipple) {
+      existingRipple.remove();
+    }
+
+    this.appendChild(circle);
+
+    setTimeout(() => {
+      circle.remove();
+    }, 600);
+  });
+});
+
+// Smart nav section highlighting
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(link => {
+        if (link.dataset.target === id) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+  });
+}, { threshold: 0.5 });
+
+sections.forEach(section => sectionObserver.observe(section));
+
+// Nav link click smooth scroll
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    const target = link.dataset.target;
+    if (target) {
+      scrollToSection(target);
+    }
   });
 });

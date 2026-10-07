@@ -1,5 +1,3 @@
-/* style.css */
-
 /* GLOBAL */
 body {
   margin: 0;
@@ -61,26 +59,26 @@ section {
 }
 
 .blob1 {
-  background: #d4e2ff;
+  background: #e0e0e0;
   top: -200px;
   left: -200px;
 }
 
 .blob2 {
-  background: #ffe7f7;
+  background: #f0f0f0;
   bottom: -200px;
   right: -200px;
 }
 
 body.dark .blob1 {
-  background: #2b3a6f;
+  background: #2b2b33;
 }
 
 body.dark .blob2 {
-  background: #5b275f;
+  background: #3a3a44;
 }
 
-/* AMBIENT FLOATING SHAPES */
+/* FLOATING SHAPES */
 .float-shape {
   position: fixed;
   width: 180px;
@@ -178,11 +176,24 @@ body.dark .nav.scrolled {
   font-size: 0.95rem;
   cursor: pointer;
   color: var(--text);
-  opacity: 0.75;
+  opacity: 0.7;
+  position: relative;
 }
 
-.nav-link:hover {
+.nav-link.active {
   opacity: 1;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
 }
 
 .nav-btn {
@@ -194,16 +205,18 @@ body.dark .nav.scrolled {
   cursor: pointer;
 }
 
-/* PAGE WRAPPER FOR TRANSITIONS */
+/* PAGE WRAPPER CINEMATIC INTRO */
 .page-wrapper {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  filter: blur(8px);
+  transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
 }
 
 .page-wrapper.ready {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 /* HERO */
@@ -211,6 +224,16 @@ body.dark .nav.scrolled {
   padding-top: 260px;
   text-align: center;
   position: relative;
+}
+
+/* HERO INTRO FIX */
+.hero-intro.visible {
+  animation: heroIntro 0.9s ease-out forwards;
+}
+
+@keyframes heroIntro {
+  0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .hero-title {
@@ -242,6 +265,8 @@ body.dark .nav.scrolled {
   border: none;
   cursor: pointer;
   font-size: 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .cta.secondary {
@@ -254,7 +279,7 @@ body.dark .cta.secondary {
   border-color: rgba(255,255,255,0.25);
 }
 
-/* HERO FLOATING TEXT PARALLAX */
+/* HERO FLOATING TEXT */
 .hero-floating-text {
   position: absolute;
   top: 40px;
@@ -311,15 +336,28 @@ body.dark .cta.secondary {
   box-shadow: 0 8px 32px rgba(0,0,0,0.05);
 }
 
-/* IMAGE PLACEHOLDERS */
+/* REAL IMAGES */
 .feature-img {
   height: 360px;
-  background: rgba(240,240,240,0.7);
   border-radius: 26px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-body.dark .feature-img {
-  background: rgba(20,20,30,0.9);
+.about-img {
+  background-image: url("images/about.jpg");
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+}
+
+.skills-img {
+  background-image: url("images/skills.jpg");
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+}
+
+body.dark .about-img,
+body.dark .skills-img {
+  filter: brightness(0.85) contrast(1.1);
 }
 
 /* PROJECTS */
@@ -341,7 +379,6 @@ body.dark .feature-img {
   transition: 0.25s;
 }
 
-/* MICRO-INTERACTION LIFT */
 .lift:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 40px rgba(0,0,0,0.08);
@@ -359,11 +396,29 @@ body.dark .feature-img {
   font-size: 1.2rem;
 }
 
-.contact-actions {
-  margin-top: 32px;
+/* SOCIAL ICONS */
+.social-icons {
+  margin-top: 40px;
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 32px;
+}
+
+.social-icon img {
+  width: 42px;
+  height: 42px;
+  opacity: 0.85;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+}
+
+.social-icon:hover img {
+  transform: translateY(-6px);
+  opacity: 1;
+}
+
+body.dark .social-icon img {
+  filter: brightness(0.85) drop-shadow(0 4px 12px rgba(0,0,0,0.4));
 }
 
 /* SKILL BARS */
@@ -395,7 +450,7 @@ body.dark .feature-img {
   opacity: 0.7;
 }
 
-/* ANIMATION */
+/* FADE-IN BASE */
 .fade {
   opacity: 0;
   transform: translateY(40px);
@@ -407,7 +462,36 @@ body.dark .feature-img {
   transform: translateY(0);
 }
 
-/* SHIMMER HOVER */
+/* SECTION MICRO-ANIMATIONS */
+.section-about.visible {
+  animation: sectionSlideLeft 0.8s ease-out forwards;
+}
+
+.section-skills.visible {
+  animation: sectionSlideRight 0.8s ease-out forwards;
+}
+
+.section-projects.visible,
+.section-contact.visible {
+  animation: sectionFadeUp 0.8s ease-out forwards;
+}
+
+@keyframes sectionSlideLeft {
+  0% { opacity: 0; transform: translateX(-40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes sectionSlideRight {
+  0% { opacity: 0; transform: translateX(40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes sectionFadeUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* SHIMMER */
 .shimmer {
   position: relative;
   overflow: hidden;
@@ -436,7 +520,28 @@ body.dark .feature-img {
   100% { left: 150%; }
 }
 
-/* MAGNETIC ELEMENTS */
+/* RIPPLE */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple span.ripple-circle {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleAnim 0.6s linear;
+  background-color: rgba(255,255,255,0.5);
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* MAGNETIC */
 .magnetic {
   transition: transform 0.15s ease-out;
 }

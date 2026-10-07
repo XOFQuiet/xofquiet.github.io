@@ -8,7 +8,6 @@
 
   <!-- Premium Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,13 +31,16 @@
   <nav class="nav">
     <div class="nav-inner">
       <div class="logo magnetic">Christian</div>
+
       <div class="nav-actions">
-        <button class="nav-link magnetic" onclick="scrollToSection('about')">About</button>
-        <button class="nav-link magnetic" onclick="scrollToSection('skills')">Skills</button>
-        <button class="nav-link magnetic" onclick="scrollToSection('projects')">Projects</button>
-        <button class="nav-link magnetic" onclick="scrollToSection('contact')">Contact</button>
+        <button class="nav-link magnetic" data-target="hero">Home</button>
+        <button class="nav-link magnetic" data-target="about">About</button>
+        <button class="nav-link magnetic" data-target="skills">Skills</button>
+        <button class="nav-link magnetic" data-target="projects">Projects</button>
+        <button class="nav-link magnetic" data-target="contact">Contact</button>
       </div>
-      <button class="nav-btn magnetic" onclick="window.location.href='mailto:you@example.com'">Email</button>
+
+      <button class="nav-btn magnetic ripple" onclick="window.location.href='mailto:you@example.com'">Email</button>
     </div>
   </nav>
 
@@ -47,21 +49,24 @@
 
     <!-- HERO -->
     <section class="hero fade parallax" id="hero">
-      <div class="hero-inner">
+      <div class="hero-inner hero-intro">
         <div class="hero-floating-text">Portfolio</div>
+
         <h1 class="hero-title shimmer">Minimal. Precise. Intentional.</h1>
+
         <p class="hero-sub">
           I build clean, fast, and thoughtfully engineered digital experiences — blending modern UI with automation and robotics expertise.
         </p>
+
         <div class="hero-actions">
-          <button class="cta magnetic shimmer" onclick="scrollToSection('projects')">Explore My Work</button>
-          <button class="cta secondary magnetic" onclick="window.open('resume.pdf', '_blank')">View Resume</button>
+          <button class="cta magnetic ripple shimmer" onclick="scrollToSection('projects')">Explore My Work</button>
+          <button class="cta secondary magnetic ripple" onclick="window.open('resume.pdf', '_blank')">View Resume</button>
         </div>
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section class="feature-row fade" id="about">
+    <section class="feature-row fade section-about" id="about">
       <div class="feature-grid">
         <div class="feature-text glass magnetic">
           <h2>About Me</h2>
@@ -70,12 +75,13 @@
             My work focuses on clarity, reliability, and premium minimal design.
           </p>
         </div>
+
         <div class="feature-img about-img magnetic"></div>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section class="feature-row fade" id="skills">
+    <section class="feature-row fade section-skills" id="skills">
       <div class="feature-grid reverse">
         <div class="feature-text glass magnetic">
           <h2>Core Skills</h2>
@@ -112,7 +118,7 @@
     </section>
 
     <!-- PROJECTS -->
-    <section class="projects fade" id="projects">
+    <section class="projects fade section-projects" id="projects">
       <h2 class="section-title shimmer">Selected Work</h2>
 
       <div class="project-grid">
@@ -134,21 +140,29 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="contact fade" id="contact">
+    <section class="contact fade section-contact" id="contact">
       <h2 class="section-title shimmer">Get In Touch</h2>
+
       <p class="contact-sub">
-        Want to collaborate or discuss a project?  
-        I’m always open to new opportunities.
+        Connect with me on my social platforms.
       </p>
-      <div class="contact-actions">
-        <button class="cta magnetic shimmer" onclick="window.location.href='mailto:you@example.com'">Email Me</button>
-        <button class="cta secondary magnetic" onclick="window.open('https://linkedin.com/in/yourprofile', '_blank')">LinkedIn</button>
+
+      <div class="social-icons">
+
+        <a href="https://github.com/YOUR_USERNAME" target="_blank" class="social-icon">
+          <img src="images/github.svg" alt="GitHub">
+        </a>
+
+        <a href="https://discord.com/users/YOUR_DISCORD_ID" target="_blank" class="social-icon">
+          <img src="images/discord.svg" alt="Discord">
+        </a>
+
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer">
-      <p>© 2026 Christian — Premium Minimal Portfolio</p>
+      <p>© 2026 Christian | All rights reserved.</p>
     </footer>
 
   </div>
