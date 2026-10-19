@@ -666,3 +666,58 @@ body.dark .social-icon img {
     height: 30px;
   }
 }
+
+/* Compact premium spacing */
+.links-section {
+  padding-top: 100px;
+  text-align: center;
+}
+
+/* Avatar */
+.links-avatar {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0.92;
+  margin-bottom: 18px;
+}
+
+/* Subtitle spacing */
+.links-sub {
+  margin-bottom: 20px;
+  opacity: 0.85;
+}
+
+/* Link list container */
+.links-list {
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Link card */
+.link-card {
+  width: 100%;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+/* SVG icon */
+.link-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Back button spacing */
+.links-back {
+  margin-top: 28px;
+}

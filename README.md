@@ -49,14 +49,14 @@ https://xofquiet.github.io/
 ## 🛠️ **Tech Stack**
 
 - **HTML5**  
-- **CSS3** (custom animations, glass effects, dark mode)  
-- **JavaScript** (parallax, ripple, magnetic cursor, scroll observers)
+- **CSS3** — custom animations, glass effects, dark mode  
+- **JavaScript** — parallax, ripple, magnetic cursor, scroll observers  
 
 ---
 
 ## 📬 **Contact**
 
-If you'd like to connect or collaborate:
+For collaboration or inquiries:
 
 - **Email:** your@email.com
 
@@ -64,7 +64,7 @@ If you'd like to connect or collaborate:
 
 ## ⭐ **About This Project**
 
-This portfolio was built to showcase my work in:
+This portfolio showcases my work in:
 
 - Web development  
 - UI/UX design  
