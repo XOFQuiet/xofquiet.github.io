@@ -30,11 +30,12 @@ This site is deployed using **GitHub Pages**.
 ```
 /
 ├── index.html
+├── links.html
 ├── style.css
 ├── script.js
 └── images/
-      ├── about.jpg
-      └── skills.jpg
+      ├── info.jpg
+      └── icons.svg
 ```
 
 ---

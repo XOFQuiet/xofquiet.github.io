@@ -669,7 +669,7 @@ body.dark .social-icon img {
 
 /* Compact premium spacing */
 .links-section {
-  padding-top: 100px;
+  padding-top: 70px;
   text-align: center;
 }
 
@@ -680,12 +680,17 @@ body.dark .social-icon img {
   border-radius: 50%;
   object-fit: cover;
   opacity: 0.92;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 
-/* Subtitle spacing */
+/* Title specifically inside links section (keeps global .section-title intact) */
+.links-section .section-title {
+  margin-bottom: 8px;
+}
+
+/* Subtitle */
 .links-sub {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   opacity: 0.85;
 }
 
@@ -711,7 +716,7 @@ body.dark .social-icon img {
   color: var(--text);
 }
 
-/* SVG icon */
+/* Link icon */
 .link-icon {
   width: 24px;
   height: 24px;
@@ -719,5 +724,13 @@ body.dark .social-icon img {
 
 /* Back button spacing */
 .links-back {
-  margin-top: 28px;
+  margin-top: 24px;
+}
+
+/* Link button disabling */
+.disabled {
+  pointer-events: none;
+  opacity: 0.45;
+  cursor: default;
+  filter: grayscale(40%);
 }
