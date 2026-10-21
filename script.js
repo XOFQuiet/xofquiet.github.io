@@ -75,8 +75,25 @@ window.addEventListener("load", () => {
 // Dark mode toggle
 const darkToggle = document.getElementById("darkToggle");
 if (darkToggle) {
+  // Check saved preference on load
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    darkToggle.textContent = "☼";
+  } else {
+    darkToggle.textContent = "☾";
+  }
+
   darkToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
+    const isDark = document.body.classList.contains("dark");
+    
+    if (isDark) {
+      darkToggle.textContent = "☼";
+      localStorage.setItem("theme", "dark");
+    } else {
+      darkToggle.textContent = "☾";
+      localStorage.setItem("theme", "light");
+    }
   });
 }
 
@@ -159,3 +176,64 @@ navLinks.forEach(link => {
     }
   });
 });
+
+// MATRIX BACKGROUND EFFECT
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const characters = 'アカサタナハマヤラワイキシチニヒミリウクスツヌフムユルエケセテネヘメレオコソトノホモヨロ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const fontSize = 14;
+let columns = Math.floor(canvas.width / fontSize);
+
+let drops = [];
+for (let i = 0; i < columns; i++) {
+  drops[i] = 1;
+}
+
+window.addEventListener('resize', () => {
+  columns = Math.floor(canvas.width / fontSize);
+  drops = [];
+  for (let i = 0; i < columns; i++) {
+    drops[i] = 1;
+  }
+});
+
+function drawMatrix() {
+  // FIXED: Now correctly checks for the 'dark' class instead of 'dark-mode'
+  const isDarkMode = document.body.classList.contains('dark');
+
+  if (isDarkMode) {
+    // Dark Mode: Dark background fade trail, white/bright text
+    ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.45)'; 
+  } else {
+    // Light Mode: White background fade trail, dark/black text
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.35)'; 
+  }
+
+  ctx.font = fontSize + 'px monospace';
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = characters.charAt(Math.floor(Math.random() * characters.length));
+    
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+
+    drops[i]++;
+  }
+}
+
+setInterval(drawMatrix, 33);
