@@ -206,7 +206,6 @@ window.addEventListener('resize', () => {
 });
 
 function drawMatrix() {
-  // FIXED: Now correctly checks for the 'dark' class instead of 'dark-mode'
   const isDarkMode = document.body.classList.contains('dark');
 
   if (isDarkMode) {
